@@ -1,0 +1,22 @@
+@use '../../assets/styles/variables.scss' as v;
+@use '../../assets/styles/mixins.scss' as m;
+
+.dayPeriod {
+  @include m.flex(flex-start, center, column);
+  padding: 0 30px;
+  
+  &:not(:last-child){
+    border-right: 1px solid v.$lightGrey;
+  }  
+  &__period {
+    font: v.$font-m;
+    color: v.$mainColor;
+    margin-bottom: 5px;
+  }
+
+  .lists {
+    display: flex;
+    flex-direction: row;
+    gap: 56px;
+  }
+}

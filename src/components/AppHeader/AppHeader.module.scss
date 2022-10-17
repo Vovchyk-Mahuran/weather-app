@@ -1,0 +1,12 @@
+@use '../../assets/styles/variables.scss' as v;
+@use '../../assets/styles/mixins.scss' as m;
+
+.header {
+  margin-bottom: 31px;
+  @include m.flex(space-between);
+
+  &__location {
+    font: v.$font-m;
+    color: v.$mainColor;
+  }
+}
