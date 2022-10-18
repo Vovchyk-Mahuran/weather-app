@@ -13,4 +13,8 @@
   &__item:not(:last-child) {
     margin-bottom: 16px;
   }
+
+  img {
+    scale:1.6;
+  }
 }

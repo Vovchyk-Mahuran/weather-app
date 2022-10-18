@@ -1,0 +1,27 @@
+@use '../../assets/styles/mixins.scss' as m;
+@use '../../assets/styles/variables.scss' as v;
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  @include m.flex(center);
+
+  &__content{
+    border: 10px solid v.$lightGrey;
+    border-top: 10px solid v.$mainColor;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

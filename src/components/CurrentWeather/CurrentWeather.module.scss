@@ -2,21 +2,19 @@
 @use '../../assets/styles/mixins.scss' as m;
 
 .container {
-    @include m.flex(center, flex-end)
+    @include m.flex(space-evenly, flex-end)
 }
 
 .current {
-  @include m.flex(center, flex-start, column);
+  @include m.flex(center, center, column);
   
   &__date {
     font: v.$font-m;
     color: v.$mainColor;
-    margin-bottom: 24px;
   }
-  
+
   &__icon {
-    max-width: 280px;
-    margin-bottom: 35px;
+    width: 220px;
   }
 
   &__temperature {
@@ -30,8 +28,9 @@
   padding: 0;
   color: v.$lightGrey;
   font: v.$font-sm;
+  min-width: 115px;
 
   &__item:not(:last-child) {
-    margin-bottom: 13px;
+    margin-bottom: 16px;
   }
 }

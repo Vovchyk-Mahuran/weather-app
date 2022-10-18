@@ -18,10 +18,6 @@
     margin: 0 auto;
   }
 
-  &__parametrs {
-    @include m.flex(space-between);
-  }
-
   &__futureDays {
     @include m.flex(space-between);
   }
