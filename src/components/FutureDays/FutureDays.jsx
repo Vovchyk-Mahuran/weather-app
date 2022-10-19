@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DayCard from '../DayCard/DayCard';
+import Context from '../../context/Context';
 
-function FutureDays({ weather }) {
-  const { forecast } = weather;
+function FutureDays() {
   const [days, setDays] = useState([]);
+  const { weather } = useContext(Context);
+  const { forecast } = weather;
 
   useEffect(() => {
     if (forecast?.forecastday) {

@@ -3,9 +3,16 @@
 
 .day {
   font: 400 16px/22px 'Open Sans';
-  color: v.$mainColor;
   width: 145px;
 
+  &.light {
+    color: v.$mainColor;
+  }
+
+  &.dark {
+    color: v.$mainLightColor;
+  }
+  
   &__date {
     display: flex;
     flex-direction: column;

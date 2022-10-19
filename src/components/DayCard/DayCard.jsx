@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import moment from 'moment/moment';
 import Card from '../Card/Card';
 import s from './DayCard.module.scss';
+import ThemeContext from '../../context/ThemeContext';
 
 function DayCard({ dayInfo }) {
+  const { theme } = useContext(ThemeContext);
   const { date, day } = dayInfo;
   return (
     <Card>
-      <div className={s.day}>
+      <div className={`${s.day} ${s[theme]}`}>
         <div className={s.day__date}>
           <span className={s.day__name}>{moment(date).format('ddd')}</span>
           <span className={s.day__number}>{moment(date).format('DD MMMM')}</span>

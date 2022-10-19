@@ -7,11 +7,6 @@
 
 .current {
   @include m.flex(center, center, column);
-  
-  &__date {
-    font: v.$font-m;
-    color: v.$mainColor;
-  }
 
   &__icon {
     width: 220px;
@@ -19,7 +14,15 @@
 
   &__temperature {
     font:400 70px/85px 'Open Sans';
-    color: v.$mainColor;
+    
+    &.light {
+      color: v.$mainColor;
+    }
+
+    &.dark {
+      color: v.$mainLightColor;
+    }
+    
   }
 }
 

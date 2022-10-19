@@ -4,13 +4,20 @@
 .dayPeriod {
   @include m.flex(flex-start, center, column);
   padding: 0 30px;
+
+  &.light {
+    color: v.$mainColor;
+  }
+  
+  &.dark {
+    color: v.$mainLightColor;
+  }
   
   &:not(:last-child){
     border-right: 1px solid v.$lightGrey;
   }  
   &__period {
     font: v.$font-m;
-    color: v.$mainColor;
     margin-bottom: 5px;
   }
 

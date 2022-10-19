@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useMemo, useState,
+} from 'react';
 import './App.scss';
 import axios from 'axios';
 import AppHeader from './components/AppHeader/AppHeader';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import FutureDays from './components/FutureDays/FutureDays';
 import Loader from './components/Loader/Loader';
+import Context from './context/Context';
+import ThemeContext from './context/ThemeContext';
 
 function App() {
   const [weather, setWeather] = useState({});
-  const [location, setLocation] = useState('Vinnitsa');
+  const [location, setLocation] = useState('Vinn');
   const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState('light');
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&days=7`;
 
@@ -28,9 +33,7 @@ function App() {
     );
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(fetchData, []);
 
   const searchLocation = (e) => {
     if (e.key === 'Enter') {
@@ -42,25 +45,41 @@ function App() {
     }
   };
 
-  if (loading) return <Loader />;
+  const contextValue = useMemo(() => ({
+    weather,
+    searchLocation,
+    setLocation,
+    location,
+  }), [location]);
+
+  const themeContextValue = useMemo(
+    () => ({
+      theme,
+      setTheme,
+    }),
+    [theme],
+  );
 
   return (
-    <div className="App">
-      <div className="App__content">
-        <div className="App__container">
-          <AppHeader
-            weather={weather}
-            searchLocation={searchLocation}
-            setLocation={setLocation}
-            locat={location}
-          />
-          <CurrentWeather weather={weather} />
-          <div className="App__futureDays">
-            <FutureDays weather={weather} />
+    <ThemeContext.Provider value={themeContextValue}>
+      <Context.Provider value={contextValue}>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className={`App ${theme}`}>
+            <div className="App__content">
+              <div className="App__container">
+                <AppHeader />
+                <CurrentWeather />
+                <div className="App__futureDays">
+                  <FutureDays />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        )}
+      </Context.Provider>
+    </ThemeContext.Provider>
   );
 }
 
