@@ -27,3 +27,33 @@
     gap: 30px;
   }
 }
+
+@media (max-width:1240px) {
+  .dayPeriod {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1090px) {
+  .dayPeriod {
+    padding: 0 15px;
+
+    .lists {
+      gap: 15px;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .dayPeriod {
+    padding: 0 7px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dayPeriod {
+    .lists {
+      gap: 30px;
+    }
+  }
+}

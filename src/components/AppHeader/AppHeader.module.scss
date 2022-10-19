@@ -3,6 +3,7 @@
 
 .header {
   margin-bottom: 31px;
+  padding: 15px;
   @include m.flex(space-between);
 
   &__location {
@@ -32,4 +33,30 @@
         color: v.$mainColor;
       }
     }
+}
+
+
+@media (max-width:767px) {
+  .header{
+    &__location{
+      font: v.$font-sm;
+    }
+  }
+}
+
+@media (max-width:690px) {
+  .header {
+   display: grid;
+   grid-row-gap: 20px;
+   grid-template-areas:"search search"
+                        "location theme";
+    
+    &__location {
+      grid-area: location;
+    }
+
+    &__btn {
+      grid-area: theme;
+    }
+  }
 }

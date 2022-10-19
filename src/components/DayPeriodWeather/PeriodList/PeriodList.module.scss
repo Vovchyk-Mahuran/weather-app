@@ -17,3 +17,17 @@
     scale:1.6;
   }
 }
+
+@media (max-width:1090px) {
+  .list {
+    img {
+      scale: 1
+    }
+  }
+}
+
+@media (max-width:1090px) {
+  .list {
+    text-align: center;
+  }
+}

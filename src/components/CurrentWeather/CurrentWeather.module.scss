@@ -37,3 +37,55 @@
     margin-bottom: 16px;
   }
 }
+
+.dayPeriods {
+  display: flex;
+}
+
+.carousel {
+  display: none;
+}
+
+@media (max-width:1240px) {
+  .current {
+    &__icon {
+      width: 180px;
+    }
+  }
+}
+
+@media (max-width: 990px){
+  .container {
+    display: grid;
+    grid-template-areas: "curr curr"
+                          "params days";
+    grid-row-gap: 30px;
+  }
+
+  .current {
+    grid-area: curr;
+  }
+
+  .params {
+    grid-area: params;
+  }
+}
+
+@media (max-width: 767px) {
+  .current {
+    &__icon {
+      width: 150px;
+    }
+
+    &__temperature {
+      font-size: 45px;
+      line-height: 60px;
+    }
+  }
+  .dayPeriods{
+    display: none;
+  }
+  .carousel {
+    display: block;
+  }
+}

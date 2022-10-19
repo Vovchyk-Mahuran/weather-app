@@ -14,7 +14,7 @@ function App() {
   const [weather, setWeather] = useState({});
   const [location, setLocation] = useState('Vinn');
   const [loading, setLoading] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&days=7`;
 
@@ -26,9 +26,9 @@ function App() {
         setLoading(false);
         setLocation('');
       },
-      (error) => {
-        console.log(error);
+      () => {
         setLoading(false);
+        setLocation('');
       },
     );
   };

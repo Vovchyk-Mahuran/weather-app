@@ -15,7 +15,6 @@ function PeriodList({ list }) {
       </li>
       <li className={s.list__item}>
         {temp_c}
-        {' '}
         &deg;
       </li>
       <li className={s.list__item}>
