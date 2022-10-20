@@ -1,0 +1,59 @@
+@use '../../assets/styles/variables.scss' as v;
+@use '../../assets/styles/mixins.scss' as m;
+
+.dayPeriod {
+  @include m.flex(flex-start, center, column);
+  padding: 0 30px;
+
+  &.light {
+    color: v.$mainColor;
+  }
+  
+  &.dark {
+    color: v.$mainLightColor;
+  }
+  
+  &:not(:last-child){
+    border-right: 1px solid v.$lightGrey;
+  }  
+  &__period {
+    font: v.$font-m;
+    margin-bottom: 5px;
+  }
+
+  .lists {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+
+@media (max-width:1240px) {
+  .dayPeriod {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1090px) {
+  .dayPeriod {
+    padding: 0 15px;
+
+    .lists {
+      gap: 15px;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .dayPeriod {
+    padding: 0 7px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dayPeriod {
+    .lists {
+      gap: 30px;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use '../../assets/styles/variables.scss' as v;
+@use '../../assets/styles/mixins.scss' as m;
+
+.header {
+  margin-bottom: 31px;
+  padding: 15px;
+  @include m.flex(space-between);
+
+  &__location {
+    font: v.$font-m;
+    
+    &.light{
+      color: v.$mainColor;
+    }
+  
+    &.dark {
+      color: v.$mainLightColor;
+    }
+  }
+
+    &__btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+  
+      &.light {
+        background-color: v.$mainColor;
+        color: v.$mainLightColor;
+      }
+  
+      &.dark {
+        background-color: v.$mainLightColor;
+        color: v.$mainColor;
+      }
+    }
+}
+
+
+@media (max-width:767px) {
+  .header{
+    &__location{
+      font: v.$font-sm;
+    }
+  }
+}
+
+@media (max-width:690px) {
+  .header {
+   display: grid;
+   grid-row-gap: 20px;
+   grid-template-areas:"search search"
+                        "location theme";
+    
+    &__location {
+      grid-area: location;
+    }
+
+    &__btn {
+      grid-area: theme;
+    }
+  }
+}

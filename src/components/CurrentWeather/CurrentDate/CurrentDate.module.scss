@@ -1,0 +1,20 @@
+@use '../../../assets/styles/variables.scss' as v;
+
+.date {
+  font: v.$font-m;
+
+  &.light{
+    color: v.$mainColor;
+  }
+
+  &.dark {
+    color: v.$mainLightColor;
+  }
+   
+}
+
+@media (max-width:1240px) {
+  .date{
+    font-size: 20px;
+  }
+}
