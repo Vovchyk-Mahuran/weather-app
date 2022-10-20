@@ -7,7 +7,7 @@ import ThemeContext from '../../context/ThemeContext';
 
 function SearchBar() {
   const { theme } = useContext(ThemeContext);
-  const { searchLocation, location, setLocation } = useContext(Context);
+  const { searchLocation, location } = useContext(Context);
   return (
     <div className={s.searchbar}>
       <img
@@ -16,11 +16,10 @@ function SearchBar() {
         alt="searchIcon"
       />
       <input
-        value={location}
+        ref={location}
         className={`${s.searchbar__input} ${s[theme]}`}
         placeholder="Search the city"
         onKeyPress={searchLocation}
-        onChange={(e) => setLocation(e.target.value)}
       />
     </div>
   );

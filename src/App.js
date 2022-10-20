@@ -1,34 +1,30 @@
 import React, {
-  useEffect, useMemo, useState,
+  useEffect, useMemo, useRef, useState,
 } from 'react';
 import './App.scss';
-import axios from 'axios';
 import AppHeader from './components/AppHeader/AppHeader';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import FutureDays from './components/FutureDays/FutureDays';
 import Loader from './components/Loader/Loader';
 import Context from './context/Context';
 import ThemeContext from './context/ThemeContext';
+import WeatherAPI from './API/weather';
 
 function App() {
   const [weather, setWeather] = useState({});
-  const [location, setLocation] = useState('Vinn');
+  const location = useRef('');
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState('dark');
 
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&days=7`;
-
   const fetchData = () => {
     setLoading(true);
-    axios.get(url).then(
+    WeatherAPI.getWeatherByLocation(location.current.value || 'Vinn').then(
       (res) => {
         setWeather(res.data);
         setLoading(false);
-        setLocation('');
       },
       () => {
         setLoading(false);
-        setLocation('');
       },
     );
   };
@@ -45,12 +41,14 @@ function App() {
     }
   };
 
-  const contextValue = useMemo(() => ({
-    weather,
-    searchLocation,
-    setLocation,
-    location,
-  }), [location]);
+  const contextValue = useMemo(
+    () => ({
+      weather,
+      searchLocation,
+      location,
+    }),
+    [weather],
+  );
 
   const themeContextValue = useMemo(
     () => ({

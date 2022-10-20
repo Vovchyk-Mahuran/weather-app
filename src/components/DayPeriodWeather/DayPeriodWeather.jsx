@@ -3,18 +3,15 @@ import PeriodList from './PeriodList/PeriodList';
 import s from './DayPeriodWeather.module.scss';
 import ThemeContext from '../../context/ThemeContext';
 
-function DayPeriodWeather({ periodName, lists }) {
+function DayPeriodWeather({ period }) {
+  const { name, lists } = period;
   const { theme } = useContext(ThemeContext);
   return (
     <div className={`${s.dayPeriod} ${s[theme]}`}>
-      <span className={s.dayPeriod__period}>{periodName}</span>
+      <span className={s.dayPeriod__period}>{name}</span>
       <div className={s.lists}>
-        {lists && (
-        <>
-          <PeriodList list={lists[0]} />
-          <PeriodList list={lists[1]} />
-        </>
-        )}
+        {lists
+          && lists.map((list) => <PeriodList key={list?.time} list={list} />)}
       </div>
     </div>
   );
