@@ -4,6 +4,7 @@
   width: 360px;
   height: 50px;
   position: relative;
+  grid-area:search;
 
   &__icon {
     position: absolute;
@@ -41,5 +42,11 @@
       }
     }
 
+  }
+}
+
+@media (max-width:690px) {
+  .searchbar{
+    width: 100%;
   }
 }

@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import moment from 'moment/moment';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import s from './CurrentWeather.module.scss';
-// import weatherIcon from '../../assets/img/weather.png';
+import '../../assets/styles/base.scss';
 import DayPeriodWeather from '../DayPeriodWeather/DayPeriodWeather';
-import Card from '../Card/Card';
 import Context from '../../context/Context';
 import CurrentDate from './CurrentDate/CurrentDate';
 import ThemeContext from '../../context/ThemeContext';
+
+const params = ['Temp, °C', 'Feels like', 'Pressure, kPa', 'Humidity, %', 'Wind, km/h'];
 
 function CurrentWeather() {
   const { theme } = useContext(ThemeContext);
@@ -14,7 +16,6 @@ function CurrentWeather() {
   const { current, forecast } = weather;
 
   const [daily, setDaily] = useState([]);
-  const params = ['Temp, °C', 'Feels like', 'Pressure, kPa', 'Humidity, %', 'Wind, km/h'];
 
   useEffect(() => {
     const temp = forecast?.forecastday[0]?.hour;
@@ -32,7 +33,7 @@ function CurrentWeather() {
   ];
 
   return (
-    <Card>
+    <div className="container">
       <div className={s.container}>
         <div className={s.current}>
           <CurrentDate />
@@ -44,10 +45,27 @@ function CurrentWeather() {
         <ul className={s.params}>
           {params.map((item) => <li className={s.params__item} key={item}>{item}</li>)}
         </ul>
-        {dailyPeriods
-          .map((p) => <DayPeriodWeather key={p.name} periodName={p.name} lists={p.lists} />)}
+        <div className={s.dayPeriods}>
+          {dailyPeriods
+            .map((p) => <DayPeriodWeather key={p.name} period={p} />)}
+        </div>
+        <Carousel
+          className={s.carousel}
+          width={150}
+          useKeyboardArrows
+          swipeable
+          showArrows={false}
+          showIndicators={false}
+          showStatus={false}
+          showThumbs={false}
+          autoPlay
+          infiniteLoop
+        >
+          {dailyPeriods
+            .map((p) => <DayPeriodWeather key={p.name} period={p} />)}
+        </Carousel>
       </div>
-    </Card>
+    </div>
   );
 }
 

@@ -13,11 +13,7 @@ function FutureDays() {
     }
   }, [weather]);
 
-  return (
-    <>
-      {days.map((day) => <DayCard key={day?.date} dayInfo={day} />)}
-    </>
-  );
+  return days.map((day) => <DayCard key={day?.date} dayInfo={day} />);
 }
 
 export default FutureDays;
