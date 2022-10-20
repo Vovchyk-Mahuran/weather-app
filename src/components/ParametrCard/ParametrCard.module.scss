@@ -1,0 +1,10 @@
+@use '../../assets/styles/variables.scss' as v;
+@use '../../assets/styles/mixins.scss' as m;
+
+.header {
+  @include m.flex(space-between, flex-start);
+  width: 360px;
+  height: 230px;
+  font: 400 20px/27px 'Open Sans';
+  color: v.$mainColor;
+}
