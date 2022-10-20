@@ -7,6 +7,29 @@
 
   &__location {
     font: v.$font-m;
-    color: v.$mainColor;
+    
+    &.light{
+      color: v.$mainColor;
+    }
+  
+    &.dark {
+      color: v.$mainLightColor;
+    }
   }
+
+    &__btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+  
+      &.light {
+        background-color: v.$mainColor;
+        color: v.$mainLightColor;
+      }
+  
+      &.dark {
+        background-color: v.$mainLightColor;
+        color: v.$mainColor;
+      }
+    }
 }

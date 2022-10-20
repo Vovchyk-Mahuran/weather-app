@@ -1,8 +1,10 @@
 @use './assets/styles/mixins.scss' as m;
+@use './assets/styles/variables.scss' as v;
 
 .App {
   width: 100%;
   height: 100%;
+  transition: background-color 0.4s ease-in-out;
 
   &__content {
       width: 1440px;
@@ -18,11 +20,31 @@
     margin: 0 auto;
   }
 
-  &__parametrs {
+  &__futureDays {
     @include m.flex(space-between);
   }
 
-  &__futureDays {
-    @include m.flex(space-between);
+  &.light {
+    background-color: v.$mainLightColor;
+  }
+
+  &.dark {
+    background-color: v.$mainColor;
+  }
+
+  &__btn {
+    padding: 5px 10px;
+    border:none;
+    border-radius: 12px;
+
+    &.light {
+      background-color: v.$mainColor;
+      color: v.$mainLightColor;
+    }
+
+    &.dark {
+      background-color: v.$mainLightColor;
+      color: v.$mainColor;
+    }
   }
 }
