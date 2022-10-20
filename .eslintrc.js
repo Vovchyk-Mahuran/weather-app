@@ -18,5 +18,6 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
     ],
     'react/prop-types': [0],
+    'linebreak-style': 0,
   },
 };
